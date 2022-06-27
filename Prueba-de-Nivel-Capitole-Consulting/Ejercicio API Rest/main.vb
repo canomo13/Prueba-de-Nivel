@@ -1,30 +1,33 @@
+Option Strict Off
+Option Explicit On
+
 Public Class Main
 
     Private Sub obtenerdatos()
 
-        Dim nombre_term As String = Nothing
-        Dim desc_term As String= Nothing
-        Dim nombre_fab As String= Nothing
-        Dim nombre_estado As String= Nothing
-        Dim fecha_fabricacion As Date= Nothing
-        Dim fecha_estado As Date= Nothing
+        Dim term_name As String = Nothing
+        Dim term_desc As String= Nothing
+        Dim fab_name As String= Nothing
+        Dim state_name As String= Nothing
+        Dim fab_date As Date= Nothing
+        Dim state_date As Date= Nothing
 
 
-        LogicadeBasededatos.OpenDatabase()
+        LogicalDatabase.OpenDatabase()
 
-        Console.WriteLine("Introduzca la terminal que busca")
+        Console.WriteLine("Put the terminal id that you looking for: ")
 
         Dim id_term as Integer = Console.ReadLine()
         Try
             
-            LogicadeBasededatos.Getdatos(id_term, nombre_term, desc_term, nombre_fab, nombre_estado, fecha_fabricacion, fecha_estado)
+            LogicalDatabase.Getdata(id_term, term_name, term_desc, fab_name, state_name, fab_date, state_date)
             Console.WriteLine("Los datos son de la terminal: " & id_term)
-            Console.WriteLine("Nombre del Terminal: " & nombre_term)
-            Console.WriteLine("Descripcion del Terminal: " & desc_term)
-            Console.WriteLine("Nombre del fabricante: " & nombre_fab)
-            Console.WriteLine("Nombre del estado: " & nombre_estado)
-            Console.WriteLine("Fecha de fabricacion: " & fecha_fabricacion)
-            Console.WriteLine("Fecha de estado: " & fecha_estado)
+            Console.WriteLine("Nombre del Terminal: " & term_name)
+            Console.WriteLine("Descripcion del Terminal: " & term_desc)
+            Console.WriteLine("Nombre del fabricante: " & fab_name)
+            Console.WriteLine("Nombre del estado: " & state_name)
+            Console.WriteLine("Fecha de fabricacion: " & fab_date)
+            Console.WriteLine("Fecha de estado: " & state_date)
            
         Catch ex As Exception
             Console.WriteLine("No se encuentra la terminal" & ex.Message)

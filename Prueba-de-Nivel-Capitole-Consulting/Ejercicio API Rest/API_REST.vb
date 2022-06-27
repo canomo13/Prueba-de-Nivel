@@ -1,6 +1,6 @@
 Imports System.Data.OleDb
 
-Public Class LogicadeBasededatos
+Public Class LogicalDatabase
 
 Public gConnection as String 
     Private conn As New OleDbConnection(gConnection)
@@ -48,7 +48,7 @@ Public gConnection as String
             transaction.Commit()
     End Sub
 
-    Public Sub Getdatos(ByVal id_terminal As Integer, ByRef nombre_term as String, ByRef desc_term as String, ByRef nombre_fab as String, ByRef nombre_estado as String, ByRef fecha_estado as String, ByRef fecha_fabricacion as String )
+    Public Sub Getdata(ByVal id_terminal As Integer, ByRef term_name as String, ByRef desc_name as String, ByRef fab_name as String, ByRef state_name as String, ByRef state_date as String, ByRef fab_date as String )
         
         Dim linea As OleDbDataReader = Nothing
 
@@ -61,12 +61,12 @@ Public gConnection as String
             linea = cmd.ExecuteReader
             if linea.HasRow Then
                 linea.Read()
-                nombre_term = linea("T.terminal_name")
-                desc_term = linea("T.terminal_desc")
-                nombre_fab = linea("F.fab_name")
-                nombre_estado = linea("E.estado_name")
-                fecha_fabricacion = linea("T.fecha_fabricacion")
-                fecha_estado = linea("T.fecha_estado")
+                term_name = linea("T.terminal_name")
+                desc_name = linea("T.terminal_desc")
+                fab_name = linea("F.fab_name")
+                state_name = linea("E.estado_name")
+                fab_date = linea("T.fecha_fabricacion")
+                state_date = linea("T.fecha_estado")
 
         Catch ex As Exception
             cmd.Console.WriteLine("Error")
